@@ -1,30 +1,26 @@
+import { createRouter, createWebHistory } from "vue-router";
 
-import { createRouter, createWebHistory, createMemoryHistory ,createRouterMatcher, createWebHashHistory } from "vue-router";
+const routes = [
+  {
+    path: "/",
+    name: "tey",
+    redirect: "/home",
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: () => import("@/views/home/index.vue"),
+  },
+  {
+    path: "/mine",
+    name: "mine",
+    component: () => import("@/views/mine/index.vue"),
+  },
+];
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 
-const routes=[
-    {
-        path:'/',
-        name:'tey',
-        redirect:"/home"
-    },
-    {
-        path: '/home',
-        name:'home',
-        component:()=>import('@/views/home/index.vue'),
-    },
-    {
-        path: '/mine',
-        name:'mine',
-        component:()=>import('@/views/mine/index.vue'),
-    }
-    
-]
-
-const router=createRouter({
-    history:createWebHistory(),
-    routes
-})
-
-
-export default router
+export default router;
